@@ -60,7 +60,7 @@ fetch("https://dummyjson.com/recipes")
                 <h3 class="name">${recipe.name}</h3>
                 <p class="cuisine">${recipe.cuisine} Cuisine</p>
                 <div class="recipe_meta">
-                    <span class="time"><i class="far fa-clock"></i> ${recipe.cookTimeMinutes} mins</span>
+                    <span class="time"><i class="far fa-clock"></i> ${recipe.prepTimeMinutes} mins</span>
                     <span class="difficulty">${recipe.difficulty}</span>
                 </div>
             </div>
