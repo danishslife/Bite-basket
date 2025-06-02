@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bite & Basket</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar section_content">
+        <a href="#" class="nav_logo">
+          <h2 class="logo_text">🍲 Bite & Basket</h2>
+        </a>
+        <ul class="nav_menu">
+          <button id="menu_close_button" class="fas fa-times"></button>
+          <li class="nav_items"><a href="#" class="nav_link">Home</a></li>
+          <li class="nav_items"><a href="#about" class="nav_link">About</a></li>
+          <li class="nav_items"><a href="#recipes" class="nav_link">Recipes</a></li>
+          <li class="nav_items"><a href="#" class="nav_link">Tips</a></li>
+          <li class="nav_items"><a href="#" class="nav_link">Contact</a></li>
+        </ul>
+        <button id="menu_open_button" class="fas fa-bars"></button>
+      </nav>
+    </header>
+
+    <!-- Main body -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero_section">
+        <div class="section_content">
+          <div class="hero_details">
+            <h2 class="title">Discover Your Next Favorite Recipe!</h2>
+            <h3 class="subtitle">
+              Bringing flavor & creativity to your kitchen.
+            </h3>
+            <p class="description">
+              Welcome to Bite & Basket! From quick snacks to gourmet feasts, find
+              step-by-step recipes, cooking tips, and foodie inspiration for
+              every taste.
+            </p>
+            <div class="buttons">
+              <a href="#" class="button order_now">Explore Recipes</a>
+              <a href="#" class="button contact_us">Contact Us</a>
+            </div>
+          </div>
+          <div class="image_wrapper">
+            <img
+              src="images/burger-frenchfries.png"
+              alt="Hero"
+              class="hero_image"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about_section" id="about">
+        <div class="section_content">
+          <div class="about_image_wrapper">
+            <img
+              src="images/gallery-2.jpg"
+              alt="About"
+              class="about-image"
+            />
+          </div>
+          <div class="about_details">
+            <h2 class="section_title">About Us</h2>
+            <p class="about_text">
+              At Bite & Basket, our mission is to make home cooking fun, easy,
+              and delicious for everyone. Whether you’re a beginner or a
+              seasoned cook, our curated collection of recipes and helpful
+              cooking guides will spark your creativity and confidence in the
+              kitchen!
+            </p>
+            <div class="socail_link_list">
+              <a href="#" class="social_link"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+              <a href="#" class="social_link"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" class="social_link"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENU/RECIPES SECTION -->
+      <section class="menu_section" id="recipes">
+        <h2 class="section_title">Our Recipes</h2>
+        <div class="section_content" id="recipes_content">
+          <ul class="menu_list" id="menu_list">
+            <li class="menu_item"></li>
+          </ul>
+          <!-- Recipe Detail Modal -->
+          <div id="recipe_detail_modal" class="recipe_modal">
+            <div class="modal_content">
+              <span class="close_modal" onclick="closeRecipeDetails()">&times;</span
+              >
+              <div id="recipe_detail_content"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
