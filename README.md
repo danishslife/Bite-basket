@@ -20,11 +20,8 @@ A responsive recipe discovery website that helps users find and explore deliciou
 
 ## 🚀 Live Demo
 
-[View Live Site](your-live-site-url-here)
+[View Live Site]([your-live-site-url-here](https://danishslife.github.io/Bite-basket/))
 
-## 📸 Screenshots
-
-[Add screenshots of your website here]
 
 ## 🏃‍♂️ Getting Started
 
