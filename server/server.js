@@ -5,6 +5,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import recipeRoutes from "./routes/recipeRoutes.js";
 import "./models/Recipe.js";
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(cookieParser());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/recipes", recipeRoutes);
 
 // Health check route
 app.get("/", (req, res) => {
