@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import "./models/Recipe.js";
 
 dotenv.config();
 
@@ -20,6 +22,9 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+
+// Routes
+app.use("/api/auth", authRoutes);
 
 // Health check route
 app.get("/", (req, res) => {

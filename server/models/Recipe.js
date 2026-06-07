@@ -1,49 +1,34 @@
-// server/models/User.js
+// server/models/Recipe.js
 import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
 
-const userSchema = new mongoose.Schema(
+const recipeSchema = new mongoose.Schema(
   {
-    name: {
+    name: { type: String, required: true, trim: true },
+    ingredients: [{ type: String, required: true }],
+    instructions: [{ type: String, required: true }],
+    prepTimeMinutes: { type: Number, required: true },
+    cookTimeMinutes: { type: Number, required: true },
+    servings: { type: Number, required: true },
+    difficulty: {
       type: String,
+      enum: ["Easy", "Medium", "Hard"],
       required: true,
-      trim: true,
     },
-    email: {
-      type: String,
+    cuisine: { type: String, required: true },
+    caloriesPerServing: { type: Number },
+    tags: [{ type: String }],
+    mealType: [{ type: String }],
+    image: { type: String, default: "" },
+    rating: { type: Number, default: 0 },
+    postedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
     },
-    password: {
-      type: String,
-      required: true,
-      minlength: 6,
-    },
-    avatar: {
-      type: String,
-      default: "",
-    },
-    bookmarks: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Recipe",
-      },
-    ],
+    isSeeded: { type: Boolean, default: false },
   },
   { timestamps: true },
 );
 
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
-  this.password = await bcrypt.hash(this.password, 10);
-  next();
-});
-
-userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
-
-const User = mongoose.model("User", userSchema);
-export default User;
+const Recipe = mongoose.model("Recipe", recipeSchema);
+export default Recipe;
