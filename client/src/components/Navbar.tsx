@@ -16,10 +16,18 @@ export const Navbar = () => {
 
   const goToSection = (sectionId: string) => {
     closeMenu();
-    navigate("/");
-    setTimeout(() => {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-    }, 50);
+    if (window.location.pathname === "/") {
+      document
+        .getElementById(sectionId)
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        document
+          .getElementById(sectionId)
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    }
   };
 
   const handleLogout = async () => {
@@ -44,7 +52,16 @@ export const Navbar = () => {
           ></button>
 
           <li className="nav_items">
-            <Link to="/" className="nav_link" onClick={closeMenu}>
+            <Link
+              to="/"
+              className="nav_link"
+              onClick={() => {
+                closeMenu();
+                if (window.location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+            >
               Home
             </Link>
           </li>
@@ -81,7 +98,29 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li className="nav_items">
-                <button className="nav_link" onClick={handleLogout}>
+                <button
+                  className="nav_link"
+                  onClick={handleLogout}
+                  style={{
+                    color: "var(--white-color)",
+                    padding: "10px 18px",
+                    fontSize: "var(--font-size-m)",
+                    borderRadius: "var(--border-radius-m)",
+                    transition: "0.3s ease",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "var(--secondary-color)";
+                    e.currentTarget.style.color = "var(--primary-color)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "none";
+                    e.currentTarget.style.color = "var(--white-color)";
+                  }}
+                >
                   Logout
                 </button>
               </li>

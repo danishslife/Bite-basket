@@ -226,6 +226,9 @@ header {
 .about_section {
   padding: 120px 0;
   background: var(--light-pink-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .about_section .section_content {
@@ -233,6 +236,7 @@ header {
   gap: 50px;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .about_section .about_image_wrapper .about-image {
@@ -613,4 +617,16 @@ header {
 .menu_section {
   background-color: var(--light-pink-color) !important;
   padding-bottom: 60px;
+}
+
+.navbar .nav_menu .nav_link,
+.navbar .nav_menu button.nav_link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu_section .menu_list {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 320px));
+  justify-content: center;
 }

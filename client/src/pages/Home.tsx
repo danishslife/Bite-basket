@@ -6,7 +6,7 @@ import type { Recipe } from "../types";
 import burgerImg from "../assets/burger-frenchfries.png";
 
 export const Home = () => {
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
   const navigate = useNavigate();
   const recipeSectionRef = useRef<HTMLElement>(null);
 
@@ -67,6 +67,7 @@ export const Home = () => {
         }
         return next;
       });
+      await refreshUser();
     } catch (err: unknown) {
       if (
         typeof err === "object" &&
@@ -145,7 +146,7 @@ export const Home = () => {
       </section>
 
       {/* RECIPES SECTION */}
-      <section className="menu_section" ref={recipeSectionRef}>
+      <section className="menu_section" ref={recipeSectionRef} id="recipes">
         <h2 className="section_title">Our Recipes</h2>
         <div className="section_content">
           {loading ? (
@@ -295,7 +296,7 @@ export const Home = () => {
       )}
 
       {/* ABOUT SECTION */}
-      <section className="about_section">
+      <section className="about_section" id="about">
         <div className="section_content">
           <div className="about_image_wrapper">
             <img
@@ -312,23 +313,6 @@ export const Home = () => {
               just starting your culinary journey, you'll find inspiration for
               every meal, every day.
             </p>
-            <ul className="socail_link_list">
-              <li>
-                <a href="#" className="social_link">
-                  🌐
-                </a>
-              </li>
-              <li>
-                <a href="#" className="social_link">
-                  🐦
-                </a>
-              </li>
-              <li>
-                <a href="#" className="social_link">
-                  📸
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
       </section>
