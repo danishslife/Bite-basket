@@ -102,7 +102,6 @@ export const Navbar = () => {
                   className="nav_link"
                   onClick={handleLogout}
                   style={{
-                    color: "var(--white-color)",
                     padding: "10px 18px",
                     fontSize: "var(--font-size-m)",
                     borderRadius: "var(--border-radius-m)",

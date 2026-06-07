@@ -13,12 +13,31 @@ export const Profile = () => {
   );
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [removingIds, setRemovingIds] = useState<Set<string>>(new Set());
+  const [postedRecipes, setPostedRecipes] = useState<Recipe[]>([]);
+  const [postedLoading, setPostedLoading] = useState(true);
 
   useEffect(() => {
     if (user?.bookmarks) {
       setBookmarkedRecipes(user.bookmarks);
     }
   }, [user?.bookmarks]);
+
+  useEffect(() => {
+    const fetchPostedRecipes = async () => {
+      try {
+        const { data } = await api.get<Recipe[]>("/recipes");
+        const userRecipes = data.filter(
+          (r) => r.postedBy._id === user?._id
+        );
+        setPostedRecipes(userRecipes);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setPostedLoading(false);
+      }
+    };
+    fetchPostedRecipes();
+  }, [user?._id]);
 
   useEffect(() => {
     if (!selectedRecipe) return;
@@ -135,7 +154,110 @@ export const Profile = () => {
                 </p>
               </div>
             </div>
+            <button
+              onClick={() => navigate("/create-recipe")}
+              style={{
+                marginTop: "20px",
+                padding: "10px 24px",
+                backgroundColor: "var(--secondary-color)",
+                color: "var(--primary-color)",
+                border: "none",
+                borderRadius: "var(--border-radius-m)",
+                fontSize: "var(--font-size-m)",
+                fontWeight: "var(--font-weight-semibold)",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                transition: "0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--white-color)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--secondary-color)";
+              }}
+            >
+              Post a Recipe
+            </button>
           </div>
+        </div>
+      </section>
+
+      {/* MY RECIPES SECTION */}
+      <section className="menu_section" style={{ paddingBottom: "60px" }}>
+        <h2 className="section_title">My Recipes</h2>
+        <div className="section_content">
+          {postedLoading ? (
+            <p style={{ textAlign: "center", color: "var(--primary-color)",
+              minHeight: "100px", display: "flex", alignItems: "center",
+              justifyContent: "center" }}>
+              Loading your recipes...
+            </p>
+          ) : postedRecipes.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "60px 0" }}>
+              <div style={{ fontSize: "4rem" }}>👨‍🍳</div>
+              <p style={{ color: "var(--primary-color)",
+                fontSize: "var(--font-size-l)",
+                fontWeight: "var(--font-weight-semibold)",
+                marginTop: "16px" }}>
+                No recipes posted yet
+              </p>
+              <p style={{ color: "#666", fontSize: "var(--font-size-m)",
+                marginTop: "8px" }}>
+                Share your first recipe with the community
+              </p>
+              <button
+                onClick={() => navigate("/create-recipe")}
+                style={{
+                  background: "var(--secondary-color)",
+                  color: "var(--primary-color)",
+                  borderRadius: "var(--border-radius-m)",
+                  padding: "10px 26px",
+                  fontWeight: "var(--font-weight-medium)",
+                  marginTop: "24px",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "var(--font-size-m)",
+                }}
+              >
+                Post Your First Recipe
+              </button>
+            </div>
+          ) : (
+            <ul className="menu_list">
+              {postedRecipes.map((recipe) => (
+                <li
+                  className="menu_item"
+                  key={recipe._id}
+                  onClick={() => setSelectedRecipe(recipe)}
+                  style={{ cursor: "pointer", position: "relative" }}
+                >
+                  <img
+                    className="menu_image"
+                    src={recipe.image}
+                    alt={recipe.name}
+                    style={{
+                      width: "100%",
+                      height: "200px",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                  <p className="name">{recipe.name}</p>
+                  <div className="recipe_content">
+                    <p className="cuisine">{recipe.cuisine} Cuisine</p>
+                    <div className="recipe_meta">
+                      <span className="time">
+                        ⏱ {recipe.prepTimeMinutes + recipe.cookTimeMinutes} min
+                      </span>
+                      <span className="difficulty">{recipe.difficulty}</span>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
 

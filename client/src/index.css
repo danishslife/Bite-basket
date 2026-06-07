@@ -630,3 +630,14 @@ header {
   grid-template-columns: repeat(auto-fill, minmax(300px, 320px));
   justify-content: center;
 }
+
+/* Mobile logout button fix */
+@media (max-width: 900px) {
+  .navbar .nav_menu button.nav_link {
+    color: var(--dark-color) !important;
+    font-size: var(--font-size-l) !important;
+    margin-top: 17px;
+    width: 100%;
+    text-align: center;
+  }
+}
