@@ -64,3 +64,76 @@ npm install
 ```
 
 Create a `.env` file in the `server/` folder:
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+NODE_ENV=development
+
+```bash
+npm run dev
+```
+
+### Seed the database
+
+```bash
+npm run seed
+```
+
+### Setup the frontend
+
+```bash
+cd ../client
+npm install
+```
+
+Create a `.env` file in the `client/` folder:
+VITE_API_URL=http://localhost:5000/api
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
+
+---
+
+## 📁 Project Structure
+BiteBasket/
+├── client/                 # React + TypeScript frontend
+│   ├── src/
+│   │   ├── api/            # Axios instance
+│   │   ├── components/     # Navbar, ProtectedRoute
+│   │   ├── context/        # Auth context
+│   │   ├── pages/          # Home, Login, Register, Profile, CreateRecipe
+│   │   └── types/          # TypeScript interfaces
+│   └── index.html
+│
+└── server/                 # Express backend
+    ├── config/             # MongoDB connection
+    ├── controllers/        # Route logic
+    ├── middleware/         # Auth middleware
+    ├── models/             # Mongoose schemas
+    ├── routes/             # Express routers
+    ├── utils/              # JWT token generator
+    └── server.js
+
+---
+
+## 📝 What I Learned
+
+- Building a full MERN stack application from scratch
+- JWT authentication with httpOnly cookies and CORS configuration
+- Designing and consuming a RESTful API
+- Managing global state with React Context API
+- TypeScript interfaces and type safety in React
+- Deploying a full-stack app with separate frontend and backend services
+- MongoDB data modeling with Mongoose and population
+- Industry-standard folder structure and code organization
+
+---
+
+## 👨‍💻 Author
+
+**Danish Abdullah**
+- Portfolio: [danishabdullah.online](https://danishabdullah.online)
+- GitHub: [@danishslife](https://github.com/danishslife)
