@@ -1,38 +1,66 @@
-# Bite-basket
+# BiteBasket 🍲
 
-A responsive recipe discovery website that helps users find and explore delicious recipes with an intuitive, mobile-friendly interface.
+A full-stack recipe discovery and sharing platform where food lovers can explore, bookmark, and post their favorite recipes.
+
+🌐 **Live Demo:** [bite-basket-iota.vercel.app](https://bite-basket-iota.vercel.app)
+
+---
 
 ## ✨ Features
 
-- 📱 Responsive design that works on all devices
-- 🔍 Browse recipes from external API
-- 📖 Detailed recipe view with ingredients and instructions
-- 🧭 Smooth scrolling navigation
-- 📲 Interactive mobile menu
-- ⚡ Fast loading with vanilla JavaScript
+- 🔐 JWT authentication with secure httpOnly cookies
+- 👤 User registration, login, and profile pages
+- 🍽 Browse 50+ recipes from around the world
+- 🔖 Bookmark and save favorite recipes
+- 📝 Post your own recipes with a full form
+- 📖 Detailed recipe modal with ingredients and instructions
+- 📱 Fully responsive with mobile hamburger menu
+- ⚡ Smooth scroll navigation
+- 🎨 Consistent design system across all pages
 
-## 🛠️ Built With
+---
 
-- HTML5
-- CSS3 (Grid, Flexbox, Media Queries)
-- Vanilla JavaScript
-- DummyJSON API
+## 🛠️ Tech Stack
 
-## 🚀 Live Demo
+**Frontend**
+- React 18 + TypeScript
+- Vite
+- React Router DOM v6
+- Axios
+- TailwindCSS + Custom CSS
 
-[View Live Site](https://danishslife.github.io/Bite-basket/)
+**Backend**
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT (jsonwebtoken)
+- bcryptjs
+- cookie-parser
 
+**Deployment**
+- Frontend → Vercel
+- Backend → Railway
+- Database → MongoDB Atlas
 
-## 🏃‍♂️ Getting Started
+---
 
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Start exploring recipes!
+## 🚀 Getting Started
 
-## 📝 What I Learned
+### Prerequisites
+- Node.js v18+
+- MongoDB Atlas account
 
-- Working with external APIs
-- Creating responsive layouts with CSS Grid
-- Implementing smooth scrolling navigation
-- Building interactive modals
-- Mobile-first design principles
+### Clone the repository
+
+```bash
+git clone https://github.com/danishslife/Bite-basket.git
+cd Bite-basket
+```
+
+### Setup the backend
+
+```bash
+cd server
+npm install
+```
+
+Create a `.env` file in the `server/` folder:
